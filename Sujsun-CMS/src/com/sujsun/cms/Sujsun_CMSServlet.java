@@ -1,4 +1,4 @@
-package com.sujsum.cms;
+package com.sujsun.cms;
 
 import java.io.IOException;
 import javax.servlet.http.*;
