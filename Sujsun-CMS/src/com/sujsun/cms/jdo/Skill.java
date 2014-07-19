@@ -18,6 +18,9 @@ public class Skill {
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Key key;
 	
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+    private String id;
+	
 	@Persistent
 	private String skillTitle;
 	@Persistent

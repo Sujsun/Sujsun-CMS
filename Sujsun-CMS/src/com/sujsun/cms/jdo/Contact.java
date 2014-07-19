@@ -10,9 +10,11 @@ import javax.jdo.annotations.*;
 @PersistenceCapable
 public class Contact implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
 	@PrimaryKey
     @Persistent( valueStrategy = IdGeneratorStrategy.IDENTITY )
-    private String id;
+    private long id;
 	
 	@Persistent
 	private Date createdDate;
@@ -41,10 +43,10 @@ public class Contact implements Serializable {
 	private List<Account> accountList;
 	@Persistent( defaultFetchGroup = "true" )
 	private List<Skill> skillList;
-	public String getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public Date getCreatedDate() {
@@ -113,7 +115,7 @@ public class Contact implements Serializable {
 	public void setSkillList(List<Skill> skillList) {
 		this.skillList = skillList;
 	}
-	public Contact(String id, Date createdDate, Date lastUpdateDate,
+	public Contact(long id, Date createdDate, Date lastUpdateDate,
 			String login, String firstName, String middleName, String lastName,
 			String pictureUrl, List<Address> addressList,
 			List<String> phoneNumberList, List<Account> accountList,

@@ -21,7 +21,7 @@ public class ContactFactory {
 		Contact returnContact = null;
 		PersistenceManager persitenceManager = PMF.get().getPersistenceManager();
 		try {
-			contactToPersist.setId( UUID.randomUUID().toString() );
+			// contactToPersist.setId( UUID.randomUUID().toString() );
 			returnContact = persitenceManager.makePersistent( contactToPersist );
 			isSuccess = true;
 		} catch( Exception exception ) {
