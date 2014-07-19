@@ -1,7 +1,7 @@
 package com.sujsun.cms.jdo;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.Key;
+import com.google.appengine.api.datastore.Key;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 

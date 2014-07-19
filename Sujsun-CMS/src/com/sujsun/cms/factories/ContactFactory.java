@@ -1,8 +1,6 @@
 package com.sujsun.cms.factories;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sujsun.cms.finalObjects.PMF;
-import com.sujsun.cms.jdo.Contact;
+import com.sujsun.cms.jdo.*;
 
 public class ContactFactory {
 	

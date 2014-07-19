@@ -23,6 +23,7 @@ public class ContactService {
 		Map<String, Object> returnHashMap = new HashMap<String, Object>();
 		try {
 			ContactFactory contactFactory = new ContactFactory();
+			System.out.println( requestBodyString );
 			Contact contact = ObjectMapper.get().readValue( requestBodyString, new TypeReference<Contact>() {} );
 			System.out.println( "FirstName :: " + contact.getFirstName() );
 			contact = contactFactory.createContact( contact );

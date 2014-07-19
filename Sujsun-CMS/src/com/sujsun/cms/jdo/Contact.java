@@ -28,18 +28,19 @@ public class Contact implements Serializable {
 	@Persistent
 	private String lastName;
 	@Persistent
+	private String password;
+	@Persistent
     private String pictureUrl;
 	
-	@Persistent
+	@Persistent( defaultFetchGroup = "true" )
 	private List<Address> addressList;
 	
 	@Persistent
 	private List<String> phoneNumberList;
-	@Persistent
+	@Persistent( defaultFetchGroup = "true" )
 	private List<Account> accountList;
-	@Persistent
+	@Persistent( defaultFetchGroup = "true" )
 	private List<Skill> skillList;
-	
 	public String getId() {
 		return id;
 	}

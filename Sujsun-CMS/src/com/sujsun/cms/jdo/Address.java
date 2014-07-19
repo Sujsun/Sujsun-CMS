@@ -1,7 +1,7 @@
 package com.sujsun.cms.jdo;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.Key;
+import com.google.appengine.api.datastore.Key;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -9,9 +9,11 @@ import javax.jdo.annotations.PrimaryKey;
 @PersistenceCapable
 public class Address {
 	
+	private static final long serialVersionUID = 1L;
+
 	@PrimaryKey
-	@Persistent( valueStrategy = IdGeneratorStrategy.IDENTITY )
-    private Long id;
+    @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+    private Key key;
 	
 	@Persistent
 	private String houseNumber;
@@ -33,11 +35,5 @@ public class Address {
 	private String country;
 	@Persistent
 	private String landMark;
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
 	
 }
