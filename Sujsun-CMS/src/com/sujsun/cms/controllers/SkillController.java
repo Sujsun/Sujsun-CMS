@@ -1,10 +1,6 @@
 package com.sujsun.cms.controllers;
 
-import java.util.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,30 +9,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sujsun.cms.services.ContactService;
+import com.sujsun.cms.services.SkillService;
 
 @Controller
-@RequestMapping( value="contact" )
-public class ContactController {
-	
+@RequestMapping( value="skill" )
+public class SkillController {
+	/*
 	@RequestMapping( method=RequestMethod.POST )
 	public @ResponseBody Map<String, Object> createContact( @RequestBody String requestBody ) {
-		return new ContactService().createContact( requestBody );
+		return new SkillService().createSkill( requestBody );
 	}
-	
+	*/
 	@RequestMapping( method=RequestMethod.GET )
 	public @ResponseBody Map<String, Object> getContact( @RequestParam( value = "id" ) String contactId ) {
-		return new ContactService().getContact( contactId );
+		return new SkillService().getSkill( contactId );
 	}
-	
+	/*
 	@RequestMapping( method=RequestMethod.PUT )
 	public @ResponseBody Map<String, Object> updateContact( @RequestBody String requestBody ) {
-		return new ContactService().createContact( requestBody );
+		return new SkillService().skillContact( requestBody );
 	}
 	
 	@RequestMapping( method=RequestMethod.DELETE )
 	public @ResponseBody Map<String, Object> deleteContact( @RequestBody String requestBody ) {
-		return new ContactService().createContact( requestBody );
+		return new SkillService().deleteSkill( requestBody );
 	}
-	
+	*/
 }

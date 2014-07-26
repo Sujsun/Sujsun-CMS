@@ -1,71 +1,68 @@
 package com.sujsun.cms.factories;
 
-import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.sujsun.cms.finalObjects.PMF;
-import com.sujsun.cms.jdo.*;
+import com.sujsun.cms.jdo.Contact;
+import com.sujsun.cms.jdo.Skill;
 
-public class ContactFactory {
+public class SkillFactory {
+
+	private static final Logger log = Logger.getLogger( SkillFactory.class.getName() );
 	
-	private static final Logger log = Logger.getLogger( ContactFactory.class.getName() );
-	
-	public Contact createContact( Contact contactToPersist ) {
+	public Skill createSkill( Skill skillToPersist ) {
 		boolean isSuccess = false;
-		Contact returnContact = null;
+		Skill returnSkill = null;
 		PersistenceManager persistenceManager = PMF.get().getPersistenceManager();
 		try {
 			persistenceManager.currentTransaction().begin();
-			returnContact = persistenceManager.makePersistent( contactToPersist );
+			returnSkill = persistenceManager.makePersistent( skillToPersist );
 			persistenceManager.currentTransaction().commit();
 			isSuccess = true;
 		} catch( Exception exception ) {
 			persistenceManager.currentTransaction().rollback();
-			log.log( Level.SEVERE, "Error while writing contact to datastore." );
+			log.log( Level.SEVERE, "Error while writing Skill to datastore." );
 			exception.printStackTrace();
 		} finally {
 			persistenceManager.close();
 		}
-		return returnContact;
+		return returnSkill;
 	}
 	
-	public Contact getContact( String id ) {
+	public Skill getSkill( String id ) {
 		boolean isSuccess = false;
-		Contact returnContact = null;
+		Skill returnSkill = null;
 		PersistenceManager persistenceManager = PMF.get().getPersistenceManager();
 		try {
 			persistenceManager.currentTransaction().begin();
-			returnContact = persistenceManager.getObjectById( Contact.class, id );
+			returnSkill = persistenceManager.getObjectById( Skill.class, id );
 			persistenceManager.currentTransaction().commit();
 			isSuccess = true;
 		} catch( JDOObjectNotFoundException jdoObjectNotFoundException ) {
-			log.log( Level.SEVERE, "Warning :: Contact not found with the given id. Given contactId : " + id );
+			log.log( Level.SEVERE, "Warning :: Skill not found with the given id. Given skill id : " + id );
 			persistenceManager.currentTransaction().rollback();
 			// jdoObjectNotFoundException.printStackTrace();
 		} catch( Exception exception ) {
 			persistenceManager.currentTransaction().rollback();
-			log.log( Level.SEVERE, "Error while getting contact from datastore." );
+			log.log( Level.SEVERE, "Error while getting skill from datastore." );
 			exception.printStackTrace();
 		} finally {
 			persistenceManager.close();
 		}
-		return returnContact;
+		return returnSkill;
 	}
 	
-	public boolean deleteContact( Contact contactToDelete ) {
+	public boolean deleteSkill( Contact skillToDelete ) {
 		boolean isSuccess = false;
-		Contact returnContact = null;
+		Skill returnSkill = null;
 		PersistenceManager persistenceManager = PMF.get().getPersistenceManager();
 		try {
 			persistenceManager.currentTransaction().begin();
-			persistenceManager.deletePersistent( contactToDelete );
+			persistenceManager.deletePersistent( skillToDelete );
 			persistenceManager.currentTransaction().commit();
 			isSuccess = true;
 		} catch( Exception exception ) {

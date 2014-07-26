@@ -3,9 +3,12 @@ package com.sujsun.cms.jdo;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
-import javax.jdo.annotations.*;
+import javax.jdo.annotations.Extension;
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 public class Contact implements Serializable {
@@ -14,7 +17,8 @@ public class Contact implements Serializable {
 	
 	@PrimaryKey
     @Persistent( valueStrategy = IdGeneratorStrategy.IDENTITY )
-    private long id;
+	@Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
+    private String id;
 	
 	@Persistent
 	private Date createdDate;
@@ -34,19 +38,18 @@ public class Contact implements Serializable {
 	@Persistent
     private String pictureUrl;
 	
+	private List<String> phoneNumberList;
+	
 	@Persistent( defaultFetchGroup = "true" )
 	private List<Address> addressList;
-	
-	@Persistent
-	private List<String> phoneNumberList;
 	@Persistent( defaultFetchGroup = "true" )
 	private List<Account> accountList;
 	@Persistent( defaultFetchGroup = "true" )
 	private List<Skill> skillList;
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public Date getCreatedDate() {
@@ -115,7 +118,7 @@ public class Contact implements Serializable {
 	public void setSkillList(List<Skill> skillList) {
 		this.skillList = skillList;
 	}
-	public Contact(long id, Date createdDate, Date lastUpdateDate,
+	public Contact(String id, Date createdDate, Date lastUpdateDate,
 			String login, String firstName, String middleName, String lastName,
 			String pictureUrl, List<Address> addressList,
 			List<String> phoneNumberList, List<Account> accountList,
@@ -134,4 +137,5 @@ public class Contact implements Serializable {
 		this.accountList = accountList;
 		this.skillList = skillList;
 	}
+	
 }
