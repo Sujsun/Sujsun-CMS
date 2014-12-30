@@ -16,14 +16,15 @@ public class AuthenticationService {
 	
 	private static final Logger log = Logger.getLogger( AuthenticationService.class.getName() );
 	
-	public Contact authenticate( JSONObject requestJSONObject ) {
+	public Contact authenticate( String requestJSONString ) {
 		boolean isSuccess = false;
 		Contact returnContact = null;
 		try {
-			// JSONObject requestJSONObject = new JSONObject( requestBodyString );
-			String login = (String) requestJSONObject.get( "login" );
-			String password = (String) requestJSONObject.get( "password" );
-			returnContact = authenticate( login, password, false );
+			JSONObject requestJSONObject = new JSONObject( requestJSONString );
+			String login = requestJSONObject.getString( "login" );
+			String password = requestJSONObject.getString( "password" );
+			boolean skipPassword = requestJSONObject.getBoolean( "skipPassword" );
+			returnContact = authenticate( login, password, skipPassword );
 			isSuccess = true;
 		} catch( Exception exception ) {
 			log.severe( "Exception while authenticating. Exception Message : " + exception.getMessage() );

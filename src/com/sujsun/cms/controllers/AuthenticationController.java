@@ -15,7 +15,7 @@ import com.sujsun.cms.services.AuthenticationService;
 public class AuthenticationController {
 	
 	@RequestMapping( method=RequestMethod.POST )
-	public @ResponseBody Contact authenticate( @RequestBody JSONObject requestJSONString ) {
+	public @ResponseBody Contact authenticate( @RequestBody String requestJSONString ) {
 		return new AuthenticationService().authenticate( requestJSONString );
 	}
 	
